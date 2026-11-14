@@ -14,8 +14,7 @@
   const una = (s) => texto(s).replace(/\s+/g, " ").trim();
   const norm = (s) => una(s).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
   const sinPunto = (s) => s.replace(/[.;}\s]+$/, "");
-  const ESC = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
-  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ESC[c]);
+  const { esc } = OLT.util;
   const plural = (n, uno, varios) => (n === 1 ? uno : varios);
 
   /* ---------- Interpretación de los textos de la CIUO ---------- */
@@ -381,11 +380,7 @@
     "Certificación": "#a8281f",
   };
   const colorTipo = (t) => COLOR_TIPO[t] ?? "#51636f";
-  const ctxMedir = document.createElement("canvas").getContext("2d");
-  const anchoTexto = (txt, px) => {
-    ctxMedir.font = `600 ${px}px "Ubuntu", system-ui, sans-serif`;
-    return ctxMedir.measureText(txt).width;
-  };
+  const anchoTexto = (txt, px) => OLT.medir.ancho(txt, px, "600");
   const cacheNube = new Map();
 
   // Disposición en espiral (determinista): las palabras más mencionadas van al
@@ -543,7 +538,7 @@
     state.sel = cod;
     marcarActual();
     renderDetalle(o, foco);
-    if (empujar && location.hash.slice(1) !== cod) history.pushState(null, "", "#" + cod);
+    if (empujar) OLT.hash.set(cod, { push: true });
     const fila = elLista.querySelector(`button.fila[data-cod="${cod}"]`);
     if (fila && !desdeLista) fila.scrollIntoView?.({ block: "nearest" });
     if (window.matchMedia && window.matchMedia("(max-width: 860px)").matches) {
@@ -591,8 +586,7 @@
     if (ev.key === "ArrowUp" && i === 0) { inputQ.focus(); return; }
     filas[Math.min(Math.max(i + (ev.key === "ArrowDown" ? 1 : -1), 0), filas.length - 1)].focus();
   });
-  window.addEventListener("hashchange", () => {
-    const cod = location.hash.slice(1);
+  OLT.hash.onChange((cod) => {
     if (porCod.has(cod)) seleccionar(cod, { empujar: false });
   });
 
@@ -609,7 +603,7 @@
     if (o) renderDetalle(o, false);
   });
   renderLista();
-  const inicial = location.hash.slice(1);
+  const inicial = OLT.hash.get();
   if (porCod.has(inicial)) seleccionar(inicial, { empujar: false });
   else renderVacio();
 })();

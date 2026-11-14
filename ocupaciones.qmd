@@ -74,5 +74,8 @@ format:
 {{< include data/json/ciuo_enadel.json >}}
 </script>
 
+<script src="assets/js/core/util.js"></script>
+<script src="assets/js/core/hash.js"></script>
+<script src="assets/js/core/medir.js"></script>
 <script src="assets/js/pages/ocupaciones.js"></script>
 ```

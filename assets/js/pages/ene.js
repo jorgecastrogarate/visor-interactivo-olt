@@ -46,9 +46,7 @@
   const PERS0 = { paso: "auto", ancla: "fin", vals: "no", titulo: "" };
 
   /* ---------- Utilidades ---------- */
-  const $ = (id) => document.getElementById(id);
-  const ESC = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
-  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ESC[c]);
+  const { $, esc } = OLT.util;
   const nf0 = new Intl.NumberFormat("es-CL", { maximumFractionDigits: 0 });
   const nf1 = new Intl.NumberFormat("es-CL", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
   const nfEje = new Intl.NumberFormat("es-CL", { maximumFractionDigits: 1 });
@@ -64,8 +62,7 @@
   };
   const ym = (i) => `${Math.floor(i / 12)}-${String(i % 12 + 1).padStart(2, "0")}`;
   const etqLineas = (i) => etiqueta(i).split(" ");   // ["ene-mar", "2024"]
-  const _cx = document.createElement("canvas").getContext?.("2d") ?? null;
-  const anchoTxt = (t, px = 12) => { if (!_cx) return t.length * px * 0.58; _cx.font = `${px}px Ubuntu, system-ui, sans-serif`; return _cx.measureText(t).width; };
+  const anchoTxt = (t, px = 12) => OLT.medir.ancho(t, px);
   const ordenar = (lista, orden) => [...lista].sort((a, b) => {
     const ia = orden.indexOf(a), ib = orden.indexOf(b);
     return (ia < 0 ? 999 : ia) - (ib < 0 ? 999 : ib) || a.localeCompare(b, "es");
@@ -654,7 +651,7 @@
     const disp = datos.get(ind);
     if (!state.terr || !disp.has(state.terr)) state.terr = territorios.find((t) => disp.has(t));
     state.cur = null;
-    if (actualizarHash) history.replaceState(null, "", "#" + ind);
+    if (actualizarHash) OLT.hash.set(ind);
     pintarControles();
     dibujar();
   }
@@ -739,8 +736,7 @@
   if (window.ResizeObserver) new ResizeObserver(alRedimensionar).observe(elGraf);
   else window.addEventListener("resize", alRedimensionar);
 
-  window.addEventListener("hashchange", () => {
-    const h = location.hash.slice(1);
+  OLT.hash.onChange((h) => {
     if (h !== state.ind && datos.has(h)) elegirIndicador(h, { actualizarHash: false });
   });
 
@@ -749,6 +745,6 @@
     "Cada punto es un trimestre móvil. La variación mensual compara con el trimestre móvil anterior (un mes antes) y la anual con el de 12 meses antes; " +
     "en las tasas las diferencias se expresan en puntos porcentuales (pp). Los datos poco fiables o no fiables se señalan con \u26A0 y con un círculo vacío.";
   llenarIndicadores();
-  const inicial = location.hash.slice(1);
+  const inicial = OLT.hash.get();
   elegirIndicador(datos.has(inicial) ? inicial : indicadores[0], { actualizarHash: false });
 })();
