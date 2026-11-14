@@ -1,0 +1,50 @@
+name: Render y publicar en Netlify
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Un solo despliegue a la vez por rama; los obsoletos se cancelan
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  render-y-publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          # Para fijar la versión (reproducible), reemplaza por p. ej. "1.7.32"
+          version: release
+
+      - name: Renderizar sitio
+        run: quarto render
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Producción: solo al hacer push a la rama principal o ejecución manual
+      - name: Publicar en Netlify (producción)
+        if: github.event_name != 'pull_request'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: npx --yes netlify-cli@latest deploy --prod --dir=_site --message "${{ github.sha }}"
+
+      # Pull requests: vista previa con URL propia, sin tocar producción.
+      # Los PR desde forks no tienen acceso a los secretos, por eso se omiten.
+      - name: Publicar vista previa (pull request)
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: npx --yes netlify-cli@latest deploy --dir=_site --alias "pr-${{ github.event.number }}" --message "PR ${{ github.event.number }}"

@@ -1,0 +1,44 @@
+# Sitio estático generado por Quarto. Se renderiza antes (quarto render) y se publica _site/.
+[build]
+  publish = "_site"
+  # Sin comando de build: Netlify no trae Quarto. Ver README / instrucciones de despliegue.
+
+# URLs de la versión anterior (iframes de app.R) -> páginas nuevas
+[[redirects]]
+  from = "/modulo_portada.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/modulo_ene.html"
+  to = "/indicadores.html"
+  status = 301
+
+[[redirects]]
+  from = "/modulo_ocupaciones.html"
+  to = "/ocupaciones.html"
+  status = 301
+
+# HTML: siempre revalidar (los datos van incrustados en la página)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# CSS y JS propios no llevan hash en el nombre: caché corta con revalidación
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+# Librerías de Quarto (versionadas por la propia carpeta site_libs)
+[[headers]]
+  for = "/site_libs/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
