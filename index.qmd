@@ -1,6 +1,9 @@
 ---
 pagetitle: "Visor Interactivo"
 lang: es
+format:
+  html:
+    css: assets/css/pages/portada.css
 ---
 
 <!--
@@ -14,125 +17,6 @@ lang: es
 -->
 
 ```{=html}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
-
-<style>
-  body { background: #f3f6f7; margin: 0; }
-
-  #pt {
-    --tinta: #12263a;
-    --suave: #51636f;
-    --papel: #ffffff;
-    --linea: #d3dce0;
-    --marino: #0d4a70;
-    --marino-oscuro: #0a3a58;
-    --lito: #1b7a70;
-    --lito-oscuro: #14615a;
-    font: 16px/1.5 "Ubuntu", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    color: var(--tinta);
-    max-width: 920px;
-    margin: 0 auto;
-    padding: 3rem 1.25rem 4rem;
-  }
-  #pt *, #pt *::before, #pt *::after { box-sizing: border-box; }
-
-  #pt .etiqueta {
-    display: inline-block; margin: 0 0 .9rem; padding: .15rem .6rem;
-    font-size: .8rem; font-weight: 600; letter-spacing: .02em;
-    color: var(--marino); background: #e4eff6; border-radius: 999px;
-  }
-  #pt h1 { margin: 0 0 1rem; font-size: 2.2rem; line-height: 1.15; font-weight: 700; }
-  #pt .intro { margin: 0 0 2.5rem; max-width: 66ch; font-size: 1.1rem; line-height: 1.65; color: var(--suave); }
-
-  /* Botones grandes */
-  #pt .opciones {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-  #pt footer { margin-top: 1.75rem; font-size: .8rem; color: var(--suave); max-width: 80ch; }
-  #pt .opcion { position: relative; }
-
-  #pt a.boton {
-    display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: .9rem;
-    min-height: 190px; padding: 1.75rem 1.75rem 1.6rem;
-    color: #fff; text-decoration: none;
-    border-radius: 10px;
-    box-shadow: 0 2px 0 rgba(0, 0, 0, .12);
-    transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
-  }
-  #pt .opcion.ene a.boton { background: var(--marino); }
-  #pt .opcion.ocu a.boton { background: var(--lito); }
-  #pt .opcion.ene a.boton:hover, #pt .opcion.ene a.boton:focus-visible { background: var(--marino-oscuro); }
-  #pt .opcion.ocu a.boton:hover, #pt .opcion.ocu a.boton:focus-visible { background: var(--lito-oscuro); }
-  #pt a.boton:hover, #pt a.boton:focus-visible { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(18, 38, 58, .22); }
-  #pt a.boton:focus-visible { outline: 3px solid var(--tinta); outline-offset: 3px; }
-  #pt a.boton svg { width: 2.6rem; height: 2.6rem; flex: none; }
-  #pt a.boton .nombre { font-size: 1.5rem; line-height: 1.2; font-weight: 700; }
-  #pt a.boton .flecha { font-size: .95rem; font-weight: 600; opacity: .9; }
-
-  /* Tooltip: aparece al pasar el cursor o al enfocar con teclado */
-  #pt .tip {
-    position: absolute; top: calc(100% + .6rem); left: 0; right: 0; z-index: 2;
-    padding: .75rem .9rem;
-    font-size: .9rem; line-height: 1.45;
-    color: #fff; background: var(--tinta);
-    border-radius: 6px;
-    box-shadow: 0 6px 16px rgba(18, 38, 58, .25);
-    opacity: 0; visibility: hidden; transform: translateY(-4px);
-    transition: opacity .15s ease, transform .15s ease, visibility .15s;
-    pointer-events: none;
-  }
-  #pt .tip::before {
-    content: ""; position: absolute; top: -6px; left: 2rem;
-    border: 6px solid transparent; border-top: 0; border-bottom-color: var(--tinta);
-  }
-  #pt .opcion:hover .tip,
-  #pt .opcion:focus-within .tip { opacity: 1; visibility: visible; transform: none; }
-
-  /* Botón de información: solo en pantallas táctiles o angostas */
-  #pt button.info { display: none; }
-
-  /* Pantallas táctiles o angostas: no hay hover fiable y el tooltip flotante taparía
-     el botón siguiente. La descripción se oculta y se abre bajo el botón, empujando
-     el contenido, al tocar el botón "i". */
-  @media (hover: none), (max-width: 640px) {
-    #pt .opciones { gap: 1.1rem; }
-
-    #pt button.info {
-      display: grid; place-items: center;
-      position: absolute; top: .6rem; right: .6rem; z-index: 1;
-      width: 2.75rem; height: 2.75rem; padding: 0;      /* área táctil mínima */
-      font: 700 1.1rem/1 "Ubuntu", system-ui, sans-serif;
-      color: #fff; background: rgba(255, 255, 255, .18);
-      border: 2px solid rgba(255, 255, 255, .85); border-radius: 50%;
-      cursor: pointer;
-    }
-    #pt button.info:hover, #pt button.info[aria-expanded="true"] { background: rgba(255, 255, 255, .32); }
-    #pt button.info:focus-visible { outline: 3px solid var(--tinta); outline-offset: 2px; }
-
-    #pt .tip {
-      display: none;
-      position: static; opacity: 1; visibility: visible; transform: none;
-      margin-top: .5rem; color: var(--tinta); background: var(--papel);
-      border: 1px solid var(--linea); box-shadow: none;
-    }
-    #pt .tip::before { display: none; }
-    #pt .opcion.abierta .tip { display: block; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    #pt a.boton, #pt .tip { transition: none; }
-    #pt a.boton:hover, #pt a.boton:focus-visible { transform: none; }
-  }
-
-  @media (max-width: 576px) {
-    #pt { padding-top: 1.75rem; }
-    #pt h1 { font-size: 1.8rem; }
-  }
-</style>
 
 <main id="pt">
   <span class="etiqueta">Versión piloto</span>
@@ -180,23 +64,5 @@ lang: es
 
 </main>
 
-<script>
-(() => {
-  "use strict";
-  // Botón "i" (pantallas táctiles/angostas): abre o cierra la descripción
-  const opciones = [...document.querySelectorAll("#pt .opcion")];
-  const alternar = (op, abrir) => {
-    op.classList.toggle("abierta", abrir);
-    op.querySelector("button.info").setAttribute("aria-expanded", String(abrir));
-  };
-  opciones.forEach((op) => {
-    op.querySelector("button.info").addEventListener("click", () =>
-      alternar(op, !op.classList.contains("abierta")));
-  });
-  document.addEventListener("keydown", (ev) => {
-    if (ev.key === "Escape") opciones.forEach((op) => alternar(op, false));
-  });
-
-})();
-</script>
+<script src="assets/js/pages/portada.js"></script>
 ```

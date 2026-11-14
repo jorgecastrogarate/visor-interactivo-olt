@@ -1,0 +1,163 @@
+body { background: #f3f6f7; margin: 0; }
+
+#ene {
+  --tinta: #12263a;
+  --suave: #51636f;
+  --fondo: #f3f6f7;
+  --papel: #ffffff;
+  --linea: #d3dce0;
+  --marino: #0d4a70;
+  --marino-claro: #e4eff6;
+  --lito: #1b7a70;
+  --rojo: #a8281f;
+  --ambar: #8a5200;
+  font: 16px/1.5 "Ubuntu", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--tinta);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+#ene *, #ene *::before, #ene *::after { box-sizing: border-box; }
+#ene button, #ene select { font: inherit; color: inherit; }
+#ene .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Cabecera */
+#ene .ene-cab h1 { font-size: 1.75rem; line-height: 1.2; font-weight: 700; margin: 0 0 .35rem; }
+#ene .ene-cab p { margin: 0; color: var(--suave); max-width: 62ch; }
+
+/* Selector de indicador */
+#ene .ene-ind { margin: 1.5rem 0 1.25rem; }
+#ene .ene-ind label { display: block; font-size: .85rem; font-weight: 600; margin-bottom: .3rem; }
+#ene .ene-ind select {
+  width: 100%; max-width: 30rem; padding: .6rem .65rem; font-size: 1rem;
+  border: 1px solid #9fb0b9; border-radius: 4px; background: #fff; cursor: pointer;
+}
+#ene .ene-ind select:focus-visible { outline: 2px solid var(--marino); outline-offset: 1px; border-color: var(--marino); }
+
+/* Panel del gráfico */
+#ene .panel { background: var(--papel); border: 1px solid var(--linea); border-radius: 6px; padding: 1.1rem 1.25rem 1.25rem; }
+#ene .barra { display: flex; flex-wrap: wrap; gap: .75rem 2rem; margin-bottom: 1.1rem; }
+#ene .grupo { display: flex; flex-direction: column; gap: .3rem; }
+#ene .grupo > span { font-size: .85rem; font-weight: 600; }
+#ene .seg { display: inline-flex; flex-wrap: wrap; }
+#ene .seg button {
+  background: #fff; border: 1px solid #9fb0b9; padding: .38rem .85rem; font-size: .9rem; cursor: pointer; margin-left: -1px;
+}
+#ene .seg button:first-child { margin-left: 0; border-radius: 4px 0 0 4px; }
+#ene .seg button:last-child { border-radius: 0 4px 4px 0; }
+#ene .seg button:hover:not(:disabled) { background: var(--marino-claro); }
+#ene .seg button[aria-pressed="true"] { background: var(--marino); border-color: var(--marino); color: #fff; font-weight: 600; position: relative; z-index: 1; }
+#ene .seg button:disabled { color: #8b9aa3; cursor: not-allowed; background: #f3f6f7; }
+#ene .seg button:focus-visible { outline: 2px solid var(--marino); outline-offset: 2px; z-index: 2; position: relative; }
+
+#ene .encab h2 { margin: 0 0 .15rem; font-size: 1.35rem; line-height: 1.25; font-weight: 700; }
+#ene .encab p { margin: 0 0 .9rem; color: var(--suave); font-size: .9rem; }
+
+/* Leyenda con interruptores */
+#ene .leyenda { display: flex; flex-wrap: wrap; gap: .4rem .5rem; margin-bottom: .6rem; }
+#ene .leyenda button {
+  display: inline-flex; align-items: center; gap: .45rem; background: #fff;
+  border: 1px solid var(--linea); border-radius: 999px; padding: .25rem .8rem .25rem .6rem; font-size: .9rem; cursor: pointer;
+}
+#ene .leyenda button:hover { background: var(--marino-claro); }
+#ene .leyenda button:focus-visible { outline: 2px solid var(--marino); outline-offset: 2px; }
+#ene .leyenda .sw { width: .9rem; height: .9rem; border-radius: 50%; background: var(--c); border: 2px solid var(--c); }
+#ene .leyenda button[aria-pressed="false"] { color: #7a8a94; }
+#ene .leyenda button[aria-pressed="false"] .sw { background: #fff; }
+
+#ene .fila-ley { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; margin-bottom: .6rem; }
+#ene .fila-ley .leyenda { margin-bottom: 0; }
+
+/* Gráfico */
+#ene .graf { position: relative; outline: none; border-radius: 4px; }
+#ene .graf:focus-visible { outline: 2px solid var(--marino); outline-offset: 3px; }
+#ene .graf svg { display: block; width: 100%; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+#ene .graf .vacio { padding: 3rem 1rem; text-align: center; color: var(--suave); }
+
+#ene .tip {
+  position: absolute; z-index: 5; top: 10px; left: 0; pointer-events: none;
+  background: #fff; border: 1px solid #8fa1ab; border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(18, 38, 58, .16);
+  padding: .6rem .75rem .65rem; font-size: .84rem; line-height: 1.35;
+  max-width: calc(100% - 8px);
+}
+#ene .tip[hidden] { display: none; }
+#ene .tip .t1 { display: block; color: var(--suave); font-size: .75rem; }
+#ene .tip .t2 { display: block; font-weight: 700; font-size: .98rem; margin-bottom: .35rem; }
+#ene .tip table { border-collapse: collapse; }
+#ene .tip th, #ene .tip td { padding: .18rem .65rem .18rem 0; text-align: left; white-space: nowrap; font-variant-numeric: tabular-nums; vertical-align: baseline; }
+#ene .tip td:last-child, #ene .tip th:last-child { padding-right: 0; }
+#ene .tip thead th { font-size: .7rem; font-weight: 600; color: var(--suave); padding-bottom: .25rem; border-bottom: 1px solid var(--linea); }
+#ene .tip tbody th { font-weight: 600; }
+#ene .tip .sw { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; margin-right: .4rem; background: var(--c); }
+#ene .tip td small { color: var(--suave); margin-left: .3rem; }
+#ene .tip td.nd { color: var(--suave); }
+#ene .tip tr.fl td { padding-top: 0; padding-bottom: .3rem; font-size: .78rem; font-weight: 600; color: var(--ambar); }
+#ene .tip tr.fl.nf td { color: var(--rojo); }
+
+#ene .pista { margin: .6rem 0 0; font-size: .82rem; color: var(--suave); }
+#ene .pista .hueco { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; border: 2px solid var(--tinta); background: #fff; vertical-align: -1px; margin: 0 .2rem 0 .1rem; }
+
+/* Tabla alternativa */
+#ene details.tabla { margin-top: 1.1rem; border-top: 1px solid var(--linea); padding-top: .7rem; }
+#ene details.tabla summary { cursor: pointer; font-weight: 600; font-size: .92rem; padding: .2rem 0; }
+#ene details.tabla summary:focus-visible { outline: 2px solid var(--marino); outline-offset: 2px; }
+#ene .scroll { max-height: 22rem; overflow: auto; margin-top: .6rem; border: 1px solid var(--linea); border-radius: 4px; }
+#ene .scroll table { border-collapse: collapse; width: 100%; font-size: .88rem; font-variant-numeric: tabular-nums; }
+#ene .scroll th, #ene .scroll td { text-align: left; padding: .35rem .8rem; border-bottom: 1px solid #edf1f3; white-space: nowrap; }
+#ene .scroll thead th { position: sticky; top: 0; background: var(--fondo); font-size: .8rem; color: var(--suave); border-bottom: 1px solid var(--linea); }
+#ene .scroll th.num, #ene .scroll td.num { text-align: right; }
+#ene .scroll td .fl { color: var(--ambar); font-size: .78rem; margin-right: .6rem; }
+#ene .scroll td .fl.nf { color: var(--rojo); }
+
+#ene .acciones { margin-top: .6rem; }
+#ene .btn {
+  background: #fff; color: var(--marino); border: 1px solid var(--marino); border-radius: 4px;
+  padding: .4rem .95rem; font-size: .9rem; font-weight: 600; cursor: pointer;
+}
+#ene .btn:hover:not(:disabled) { background: var(--marino-claro); }
+#ene .btn:focus-visible { outline: 2px solid var(--marino); outline-offset: 2px; }
+#ene .btn:disabled { color: #8b9aa3; border-color: #b9c6cd; cursor: not-allowed; }
+
+#ene .aviso { border-left: 3px solid var(--rojo); background: #fbefee; padding: .7rem .9rem; margin: 1rem 0; font-size: .92rem; max-width: 70ch; }
+#ene footer { margin-top: 1.75rem; font-size: .8rem; color: var(--suave); max-width: 80ch; }
+
+@media (max-width: 640px) {
+  #ene { padding: 1rem .75rem 2.5rem; }
+  #ene .panel { padding: .9rem .75rem 1rem; }
+  #ene .seg { flex-wrap: nowrap; max-width: 100%; }
+  #ene .seg button { padding: .38rem .55rem; font-size: .82rem; min-width: 0; }
+  /* En pantallas angostas el detalle se muestra bajo el gráfico, para no tapar las líneas */
+  #ene .tip { position: static; margin-top: .6rem; max-width: none; box-shadow: none; font-size: .8rem; padding: .5rem .6rem; }
+  #ene .tip th, #ene .tip td { padding-right: .5rem; }
+  #ene .tip thead th { white-space: normal; vertical-align: bottom; }
+  #ene .tip td small { display: block; margin-left: 0; }
+}
+
+/* ---------- Pestañas y vista anual ---------- */
+#ene [hidden] { display: none !important; }
+#ene .tabs { display: flex; gap: .25rem; margin: 1.25rem 0 0; border-bottom: 2px solid var(--linea); }
+#ene .tabs button {
+  background: none; border: 0; border-bottom: 3px solid transparent; margin-bottom: -2px;
+  padding: .6rem 1.1rem; font-weight: 600; cursor: pointer; color: var(--suave); border-radius: 4px 4px 0 0;
+}
+#ene .tabs button:hover { background: var(--marino-claro); }
+#ene .tabs button[aria-selected="true"] { color: var(--marino); border-bottom-color: var(--marino); }
+#ene .tabs button:focus-visible { outline: 2px solid var(--marino); outline-offset: -2px; }
+
+#ene .grupo > label { font-size: .85rem; font-weight: 600; }
+#ene .grupo select {
+  padding: .38rem .6rem; font-size: .9rem; min-width: 7rem;
+  border: 1px solid #9fb0b9; border-radius: 4px; background: #fff; cursor: pointer;
+}
+#ene .grupo select:focus-visible { outline: 2px solid var(--marino); outline-offset: 1px; }
+#ene .leyenda .it { display: inline-flex; align-items: center; gap: .45rem; font-size: .88rem; padding: .1rem .5rem .1rem 0; }
+#ene .leyenda .it .sw { border-radius: 2px; }
+#ene .pista .rayado {
+  display: inline-block; width: .8rem; height: .7rem; vertical-align: -1px; margin: 0 .2rem 0 .1rem;
+  background: repeating-linear-gradient(45deg, #51636f 0 2px, #fff 2px 4px); border: 1px solid #51636f;
+}
+#ene #ene-comp button { border-radius: 4px; }
+#ene details.pers { margin: 0 0 1rem; }
+#ene details.pers summary { cursor: pointer; font-weight: 600; font-size: .92rem; margin-bottom: .7rem; }
+#ene .grupo input[type="text"] { padding: .38rem .6rem; font-size: .9rem; min-width: 16rem; border: 1px solid #9fb0b9; border-radius: 4px; }

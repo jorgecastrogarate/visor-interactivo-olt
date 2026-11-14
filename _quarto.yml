@@ -5,6 +5,8 @@ project:
     - index.qmd
     - indicadores.qmd
     - ocupaciones.qmd
+  resources:
+    - assets/js/**
 
 website:
   title: "Visor Interactivo"
@@ -29,3 +31,4 @@ format:
     toc: false
     page-layout: custom
     embed-resources: false
+    include-in-header: _includes/head.html
