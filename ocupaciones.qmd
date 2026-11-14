@@ -57,8 +57,8 @@ lang: es
     align-items: start;
   }
   #cv .cv-nav {
-    position: sticky; top: 1rem;
-    height: calc(100vh - 2rem); max-height: 880px;
+    position: sticky; top: 4.5rem;   /* debajo del navbar fijo */
+    height: calc(100vh - 5.5rem); height: calc(100dvh - 5.5rem); max-height: 880px;
     display: flex; flex-direction: column;
     background: var(--papel);
     border: 1px solid var(--linea);
@@ -252,7 +252,7 @@ lang: es
   </header>
 
   <div class="cv-cuerpo">
-    <aside class="cv-nav" aria-label="Buscador de ocupaciones">
+    <div class="cv-nav" role="complementary" aria-label="Buscador de ocupaciones">
       <div class="cv-filtros">
         <label class="etq" for="cv-q">Buscar por código, ocupación, puesto, perfil o mención</label>
         <input id="cv-q" type="search" autocomplete="off" spellcheck="false" placeholder="Ej.: 4110, soldador, bodega">
@@ -261,7 +261,7 @@ lang: es
         <p id="cv-n" class="cv-n" role="status" aria-live="polite"></p>
       </div>
       <div id="cv-lista" class="cv-lista"></div>
-    </aside>
+    </div>
 
     <section id="cv-detalle" class="cv-detalle" tabindex="-1" aria-label="Ficha de la ocupación"></section>
   </div>
