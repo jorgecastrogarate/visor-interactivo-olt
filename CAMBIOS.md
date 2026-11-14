@@ -60,7 +60,7 @@ con su `app.R` Shiny). Los commits corresponden al historial de git de esta carp
     etiquetas de los ejes, nube de competencias y ausencia de errores en consola.
     No se probaron a mano el botón atrás, el cambio de hash en vivo, el tooltip ni las exportaciones.
 
-## 8. Publicación (aún sin commit)
+## 8. Publicación (commit `0b653e9`)
 28. `netlify.toml`: publicación de `_site/`, redirecciones 301 de las URL antiguas
     (`modulo_*.html` a las páginas nuevas), cabeceras de caché y seguridad básica.
 29. `.github/workflows/deploy.yml`: renderiza con Quarto y publica en Netlify (producción en push,
@@ -68,7 +68,18 @@ con su `app.R` Shiny). Los commits corresponden al historial de git de esta carp
 30. `.gitignore`: se añadieron `/_baseline/` y `/.netlify/`.
 31. `README.md` y este registro.
 
+## 9. Exportación a archivos (`assets/js/core/export.js`)
+32. Se extrajo de `ene.js` la generación de Excel y PNG a `assets/js/core/export.js`: `OLT.export.xlsx(hojas)`
+    (ZIP, CRC y XML del `.xlsx`, con hojas, estilos y anchos configurables), `svgAPng(svg, ancho, alto, escala)`
+    (promesa con el Blob) y `descargarBlob`.
+33. `envolver` (ajuste de texto en líneas) pasó a `OLT.medir.envolver`.
+34. `ene.js` conserva solo lo propio del módulo: armar las filas desde `contexto()`, la hoja «Información»,
+    el SVG del gráfico, el nombre de archivo y los mensajes. `indicadores.qmd` carga `export.js` antes de `ene.js`.
+35. Se verificó: sintaxis, un `.xlsx` de prueba leído con `readxl`, y ambas descargas en la página real
+    (Excel como ZIP válido, PNG con firma correcta y sin errores de consola).
+    Diferencia: las columnas de fiabilidad del Excel se escriben ahora en orden de columna dentro de cada fila.
+
 ## Estado final
 - Sitio Quarto de 3 páginas con navbar, sin dependencia de R ni de Shiny.
-- CSS y JS en `assets/`, con tokens, componentes y utilidades compartidas.
+- CSS y JS en `assets/`, con tokens, componentes y utilidades compartidas (incluida la exportación a archivos).
 - El proyecto `ENE/` original no se modificó.

@@ -9,5 +9,16 @@ OLT.medir = (() => {
     cx.font = `${peso ? peso + " " : ""}${px}px "Ubuntu", system-ui, sans-serif`;
     return cx.measureText(txt).width;
   };
-  return { ancho };
+  // Divide un texto en líneas de a lo más `max` píxeles; medirFn(texto) devuelve el ancho de un texto.
+  const envolver = (texto, max, medirFn) => {
+    const lineas = [];
+    let actual = "";
+    for (const palabra of texto.split(" ")) {
+      const prueba = actual ? `${actual} ${palabra}` : palabra;
+      if (actual && medirFn(prueba) > max) { lineas.push(actual); actual = palabra; } else actual = prueba;
+    }
+    if (actual) lineas.push(actual);
+    return lineas;
+  };
+  return { ancho, envolver };
 })();

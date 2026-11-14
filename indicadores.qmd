@@ -88,5 +88,6 @@ format:
 <script src="assets/js/core/util.js"></script>
 <script src="assets/js/core/hash.js"></script>
 <script src="assets/js/core/medir.js"></script>
+<script src="assets/js/core/export.js"></script>
 <script src="assets/js/pages/ene.js"></script>
 ```

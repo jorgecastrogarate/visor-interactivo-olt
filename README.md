@@ -27,7 +27,7 @@ Pagina web/
 │   │   ├── components.css   # base y componentes comunes, colgados de la clase .visor
 │   │   └── pages/           # estilos propios de cada página (portada, ene, ocupaciones)
 │   └── js/
-│       ├── core/            # utilidades compartidas: util.js (esc, $), hash.js, medir.js
+│       ├── core/            # utilidades compartidas: util.js (esc, $), hash.js, medir.js, export.js (xlsx, PNG, descarga)
 │       └── pages/           # lógica de cada página (portada, ene, ocupaciones)
 ├── data/json/               # JSON que se incrustan en el HTML al renderizar
 ├── netlify.toml             # publicación, redirecciones y cabeceras para Netlify
@@ -47,17 +47,20 @@ Los colores y la tipografía se cambian solo en `assets/css/tokens.css`.
 ### Cómo se combinan los scripts
 
 Son scripts clásicos (sin módulos ES). Los de `core/` cuelgan del espacio de nombres global `OLT`
-(`OLT.util`, `OLT.hash`, `OLT.medir`). Cada página los carga antes de su propio script, al final del
+(`OLT.util`, `OLT.hash`, `OLT.medir`, `OLT.export`). Cada página los carga antes de su propio script, al final del
 contenido, después de los bloques de datos:
 
 ```html
 <script src="assets/js/core/util.js"></script>
 <script src="assets/js/core/hash.js"></script>
 <script src="assets/js/core/medir.js"></script>
+<script src="assets/js/core/export.js"></script>
 <script src="assets/js/pages/ene.js"></script>
 ```
 
-El orden importa: los scripts de `core/` van siempre antes que el de la página.
+El orden importa: los scripts de `core/` van siempre antes que el de la página. `export.js` genera archivos sin
+librerías: `OLT.export.xlsx(hojas)`, `OLT.export.svgAPng(svg, ancho, alto)` y `OLT.export.descargarBlob(blob, nombre)`;
+lo usa solo el módulo de indicadores, y ocupaciones no lo carga.
 
 ## Requisitos
 
@@ -128,7 +131,6 @@ antiguas necesitan otra solución (por ejemplo `aliases:` en el YAML de las pág
 
 ## Pendientes conocidos
 
-- La exportación a Excel y PNG sigue dentro de `assets/js/pages/ene.js`; falta extraerla a `core/`.
 - Quarto emite el aviso «Unable to parse table from raw html block» al renderizar `indicadores` y
   `ocupaciones`. No afecta al resultado, pero no se investigó su origen.
 - Los datos anuales (`ene_indicadores_anuales.json`) no están integrados en el módulo de indicadores.

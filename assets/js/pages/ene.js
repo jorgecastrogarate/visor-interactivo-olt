@@ -395,102 +395,39 @@
     elTabla.innerHTML = h + `</tbody></table>`;
   }
 
-  /* ---------- Exportar a Excel (.xlsx generado en el navegador, sin librerías) ---------- */
-  const XML_ESC = { "&": "&amp;", "<": "&lt;", ">": "&gt;" };
-  const xesc = (t) => String(t ?? "").replace(/[&<>]/g, (ch) => XML_ESC[ch]);
-  const colLetra = (i) => String.fromCharCode(65 + i);           // hasta 26 columnas
-  const celdaTxt = (ref, t, est = 0) => `<c r="${ref}" t="inlineStr"${est ? ` s="${est}"` : ""}><is><t>${xesc(t)}</t></is></c>`;
-  const celdaNum = (ref, n, est = 0) => `<c r="${ref}" s="${est}"><v>${n}</v></c>`;
-
-  const CRC = (() => {
-    const t = new Uint32Array(256);
-    for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; }
-    return t;
-  })();
-  const crc32 = (u8) => { let c = 0xFFFFFFFF; for (let i = 0; i < u8.length; i++) c = CRC[(c ^ u8[i]) & 255] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; };
-
-  // ZIP sin compresión (método "store"), suficiente para un .xlsx
-  function crearZip(archivos) {
-    const enc = new TextEncoder();
-    const u16 = (n) => [n & 255, (n >>> 8) & 255];
-    const u32 = (n) => [n & 255, (n >>> 8) & 255, (n >>> 16) & 255, (n >>> 24) & 255];
-    const locales = [], centrales = [];
-    let desplazamiento = 0;
-    for (const a of archivos) {
-      const nombre = enc.encode(a.nombre), datos = enc.encode(a.contenido);
-      const crc = crc32(datos), tam = datos.length;
-      const cab = new Uint8Array([0x50, 0x4b, 3, 4, ...u16(20), ...u16(0x0800), ...u16(0), ...u16(0), ...u16(0x21),
-        ...u32(crc), ...u32(tam), ...u32(tam), ...u16(nombre.length), ...u16(0)]);
-      locales.push(cab, nombre, datos);
-      centrales.push(new Uint8Array([0x50, 0x4b, 1, 2, ...u16(20), ...u16(20), ...u16(0x0800), ...u16(0), ...u16(0), ...u16(0x21),
-        ...u32(crc), ...u32(tam), ...u32(tam), ...u16(nombre.length), ...u16(0), ...u16(0), ...u16(0), ...u16(0),
-        ...u32(0), ...u32(desplazamiento)]), nombre);
-      desplazamiento += cab.length + nombre.length + tam;
-    }
-    const tamCentral = centrales.reduce((n, x) => n + x.length, 0);
-    const fin = new Uint8Array([0x50, 0x4b, 5, 6, ...u16(0), ...u16(0), ...u16(archivos.length), ...u16(archivos.length),
-      ...u32(tamCentral), ...u32(desplazamiento), ...u16(0)]);
-    return new Blob([...locales, ...centrales, fin], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
-  }
-
-  const XML = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n';
-  const NS = 'xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"';
-  const REL = "http://schemas.openxmlformats.org/officeDocument/2006/relationships";
-  // Estilos: 0 normal, 1 encabezado en negrita, 2 entero con miles, 3 porcentaje 0,0 %, 4 fecha aaaa-mm
-  const ESTILOS = XML + `<styleSheet ${NS}>` +
-    `<numFmts count="2"><numFmt numFmtId="164" formatCode="0.0%"/><numFmt numFmtId="165" formatCode="yyyy\\-mm"/></numFmts>` +
-    `<fonts count="2"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><name val="Calibri"/></font></fonts>` +
-    `<fills count="2"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill></fills>` +
-    `<borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders>` +
-    `<cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs>` +
-    `<cellXfs count="5">` +
-    `<xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>` +
-    `<xf numFmtId="0" fontId="1" fillId="0" borderId="0" xfId="0" applyFont="1"/>` +
-    `<xf numFmtId="3" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>` +
-    `<xf numFmtId="164" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>` +
-    `<xf numFmtId="165" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>` +
-    `</cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>`;
+  /* ---------- Exportar a Excel y PNG (los archivos se generan en core/export.js) ---------- */
+  const { xlsx, svgAPng, descargarBlob, ESTILO } = OLT.export;
+  const { envolver } = OLT.medir;
 
   const nombreArchivo = (ext) => {
     const per = { "12": "1-año", "24": "2-años", "60": "5-años", todo: "serie-completa" }[state.per] ?? `${ym(state.d0 ?? 0)}_a_${ym(state.d1 ?? 0)}`;
     return `ene_${state.ind}_${state.terr}${state.comp && state.terr !== TERR_NAC ? "_vs-nacional" : ""}_${per}.${ext}`;
   };
-  function descargarBlob(blob, nombre) {
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url; a.download = nombre;
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 3000);
-  }
 
   function exportarExcel() {
     const c = contexto();
     if (!c || !c.visibles.length) return;
     const nombreT = nombreTerr.get(state.terr) ?? state.terr;
-    const cats = c.visibles;
-    const est = c.tasa ? 3 : 2;
+    const est = c.tasa ? ESTILO.porcentaje : ESTILO.entero;
 
     // Hoja "Datos": una fila por trimestre móvil, en orden cronológico
-    const cols = [...cats.map((k) => ({ k, t: c.t, etq: k })), ...c.visN.map((k) => ({ k, t: c.tn, etq: `${k} (Nacional)` }))];
+    const cols = [...c.visibles.map((k) => ({ k, t: c.t, etq: k })), ...c.visN.map((k) => ({ k, t: c.tn, etq: `${k} (Nacional)` }))];
     const enc = ["Trimestre móvil", "Mes central", ...cols.map((x) => x.etq), ...cols.map((x) => `Fiabilidad ${x.etq}`)];
-    let filas = `<row r="1">${enc.map((t, i) => celdaTxt(colLetra(i) + 1, t, 1)).join("")}</row>`;
-    let n = 1;
+    const filas = [enc.map((v) => ({ v, est: ESTILO.encabezado }))];
     for (let i = c.i0; i <= c.i1; i++) {
-      n++;
       const serie = Math.round(Date.UTC(Math.floor(i / 12), i % 12, 1) / 86400000) + 25569;   // fecha serial de Excel
-      let celdas = celdaTxt("A" + n, periodoDe(i, c)) + celdaNum("B" + n, serie, 4);
-      cols.forEach((x, j) => {
-        const r = x.t.cats.get(x.k).get(i);
-        if (r && r.v != null) celdas += celdaNum(colLetra(2 + j) + n, r.v, est);
-        if (r && r.flag) celdas += celdaTxt(colLetra(2 + cols.length + j) + n, r.flag);
-      });
-      filas += `<row r="${n}">${celdas}</row>`;
+      const reg = cols.map((x) => x.t.cats.get(x.k).get(i));
+      filas.push([
+        periodoDe(i, c),
+        { v: serie, est: ESTILO.fecha },
+        ...reg.map((r) => (r && r.v != null ? { v: r.v, est } : null)),
+        ...reg.map((r) => (r && r.flag ? r.flag : null))
+      ]);
     }
-    const anchos = [18, 12, ...cols.map(() => 14), ...cols.map(() => 24)];
-    const hojaDatos = XML + `<worksheet ${NS}><sheetViews><sheetView workbookViewId="0">` +
-      `<pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews>` +
-      `<cols>${anchos.map((w, i) => `<col min="${i + 1}" max="${i + 1}" width="${w}" customWidth="1"/>`).join("")}</cols>` +
-      `<sheetData>${filas}</sheetData></worksheet>`;
+    const hojaDatos = {
+      nombre: "Datos", filas, congelarEncabezado: true,
+      anchos: [18, 12, ...cols.map(() => 14), ...cols.map(() => 24)]
+    };
 
     // Hoja "Información": qué se exportó
     const info = [
@@ -504,49 +441,18 @@
       ["Fiabilidad", "Las columnas «Fiabilidad» indican los datos poco fiables o no fiables; si están vacías, el dato no tiene marca."],
       ["Exportado el", new Date().toLocaleString("es-CL")]
     ];
-    const hojaInfo = XML + `<worksheet ${NS}><cols><col min="1" max="1" width="24" customWidth="1"/><col min="2" max="2" width="90" customWidth="1"/></cols><sheetData>` +
-      info.map(([k, v], i) => `<row r="${i + 1}">${celdaTxt("A" + (i + 1), k, 1)}${celdaTxt("B" + (i + 1), v)}</row>`).join("") +
-      `</sheetData></worksheet>`;
-
-    const blob = crearZip([
-      { nombre: "[Content_Types].xml", contenido: XML + `<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">` +
-        `<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>` +
-        `<Default Extension="xml" ContentType="application/xml"/>` +
-        `<Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>` +
-        `<Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>` +
-        `<Override PartName="/xl/worksheets/sheet2.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>` +
-        `<Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/></Types>` },
-      { nombre: "_rels/.rels", contenido: XML + `<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">` +
-        `<Relationship Id="rId1" Type="${REL}/officeDocument" Target="xl/workbook.xml"/></Relationships>` },
-      { nombre: "xl/workbook.xml", contenido: XML + `<workbook ${NS} xmlns:r="${REL}"><sheets>` +
-        `<sheet name="Datos" sheetId="1" r:id="rId1"/><sheet name="Información" sheetId="2" r:id="rId2"/></sheets></workbook>` },
-      { nombre: "xl/_rels/workbook.xml.rels", contenido: XML + `<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">` +
-        `<Relationship Id="rId1" Type="${REL}/worksheet" Target="worksheets/sheet1.xml"/>` +
-        `<Relationship Id="rId2" Type="${REL}/worksheet" Target="worksheets/sheet2.xml"/>` +
-        `<Relationship Id="rId3" Type="${REL}/styles" Target="styles.xml"/></Relationships>` },
-      { nombre: "xl/styles.xml", contenido: ESTILOS },
-      { nombre: "xl/worksheets/sheet1.xml", contenido: hojaDatos },
-      { nombre: "xl/worksheets/sheet2.xml", contenido: hojaInfo }
-    ]);
+    const hojaInfo = {
+      nombre: "Información", anchos: [24, 90],
+      filas: info.map(([k, v]) => [{ v: k, est: ESTILO.encabezado }, v])
+    };
 
     const nombre = nombreArchivo("xlsx");
-    descargarBlob(blob, nombre);
+    descargarBlob(xlsx([hojaDatos, hojaInfo]), nombre);
     elLive.textContent = `Se generó el archivo ${nombre}.`;
   }
   btnXlsx.addEventListener("click", exportarExcel);
 
   /* ---------- Descargar imagen (PNG) del gráfico ---------- */
-  function envolver(texto, ancho, medir) {
-    const lineas = [];
-    let actual = "";
-    for (const palabra of texto.split(" ")) {
-      const prueba = actual ? `${actual} ${palabra}` : palabra;
-      if (actual && medir(prueba) > ancho) { lineas.push(actual); actual = palabra; } else actual = prueba;
-    }
-    if (actual) lineas.push(actual);
-    return lineas;
-  }
-
   function exportarPng() {
     const c = contexto();
     if (!c || !c.visibles.length) return;
@@ -597,22 +503,13 @@
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" font-family="${FAM}">` +
       `<rect width="${W}" height="${H}" fill="#ffffff"/>${capa}</svg>`;
 
-    const img = new Image();
-    img.onload = () => {
-      const cv = document.createElement("canvas");
-      cv.width = W * escala; cv.height = H * escala;
-      const cx = cv.getContext("2d");
-      cx.fillStyle = "#ffffff"; cx.fillRect(0, 0, cv.width, cv.height);
-      cx.drawImage(img, 0, 0, cv.width, cv.height);
-      cv.toBlob((blob) => {
-        if (!blob) { elLive.textContent = "No se pudo generar la imagen."; return; }
+    svgAPng(svg, W, H, escala)
+      .then((blob) => {
         const nombre = nombreArchivo("png");
         descargarBlob(blob, nombre);
         elLive.textContent = `Se generó la imagen ${nombre}.`;
-      }, "image/png");
-    };
-    img.onerror = () => { elLive.textContent = "No se pudo generar la imagen."; };
-    img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+      })
+      .catch(() => { elLive.textContent = "No se pudo generar la imagen."; });
   }
   btnPng.addEventListener("click", exportarPng);
 
