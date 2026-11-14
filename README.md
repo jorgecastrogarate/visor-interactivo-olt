@@ -126,8 +126,10 @@ fija ambas versiones en el archivo.
 
 El sitio es estático: sirve cualquier hosting de archivos. Alternativas: Posit Connect Cloud
 (`quarto publish` o Posit Publisher en Positron), Posit Connect (servidor propio), Quarto Pub,
-GitHub Pages y Cloudflare Pages. `netlify.toml` solo aplica en Netlify; en otros hostings las URL
-antiguas necesitan otra solución (por ejemplo `aliases:` en el YAML de las páginas).
+GitHub Pages y Cloudflare Pages. `netlify.toml` solo aplica en Netlify. Para las URL antiguas, cada página declara
+`aliases:` en su YAML (`modulo_portada.html`, `modulo_ene.html`, `modulo_ocupaciones.html`): Quarto genera
+una página que redirige por JavaScript conservando el hash y los parámetros, válida en cualquier hosting.
+En Netlify prevalece el 301 de `netlify.toml` (`force = true`).
 
 ## Pendientes conocidos
 

@@ -79,6 +79,13 @@ con su `app.R` Shiny). Los commits corresponden al historial de git de esta carp
     (Excel como ZIP válido, PNG con firma correcta y sin errores de consola).
     Diferencia: las columnas de fiabilidad del Excel se escriben ahora en orden de columna dentro de cada fila.
 
+## 10. Redirecciones de URL antiguas
+36. Se añadió `aliases:` a `index.qmd`, `indicadores.qmd` y `ocupaciones.qmd` (`modulo_portada.html`,
+    `modulo_ene.html`, `modulo_ocupaciones.html`). Quarto genera páginas que redirigen por JavaScript,
+    conservando hash y parámetros, y funcionan en cualquier hosting. Se probó con el hash en ENE y ocupaciones.
+37. `netlify.toml`: las tres reglas de redirección llevan `force = true`, porque Netlify no aplica una
+    redirección si ya existe un archivo con esa ruta; así en Netlify sigue prevaleciendo el 301 real.
+
 ## Estado final
 - Sitio Quarto de 3 páginas con navbar, sin dependencia de R ni de Shiny.
 - CSS y JS en `assets/`, con tokens, componentes y utilidades compartidas (incluida la exportación a archivos).

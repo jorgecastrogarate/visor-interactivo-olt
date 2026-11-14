@@ -1,6 +1,8 @@
 ---
 pagetitle: "Ocupaciones CIUO-08.CL"
 lang: es
+aliases:
+  - modulo_ocupaciones.html
 format:
   html:
     css: assets/css/pages/ocupaciones.css

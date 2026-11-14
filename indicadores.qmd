@@ -1,6 +1,8 @@
 ---
 pagetitle: "Indicadores ENE"
 lang: es
+aliases:
+  - modulo_ene.html
 format:
   html:
     css: assets/css/pages/ene.css

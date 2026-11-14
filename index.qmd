@@ -1,6 +1,8 @@
 ---
 pagetitle: "Visor Interactivo"
 lang: es
+aliases:
+  - modulo_portada.html
 format:
   html:
     css: assets/css/pages/portada.css

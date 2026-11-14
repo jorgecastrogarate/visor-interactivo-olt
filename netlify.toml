@@ -3,21 +3,26 @@
   publish = "_site"
   # Sin comando de build: Netlify no trae Quarto. Ver README / instrucciones de despliegue.
 
-# URLs de la versión anterior (iframes de app.R) -> páginas nuevas
+# URLs de la versión anterior (iframes de app.R) -> páginas nuevas.
+# force = true: en Netlify prevalece este 301 sobre las páginas de redirección que genera Quarto (aliases),
+# que sirven de respaldo en otros hostings.
 [[redirects]]
   from = "/modulo_portada.html"
   to = "/"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/modulo_ene.html"
   to = "/indicadores.html"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/modulo_ocupaciones.html"
   to = "/ocupaciones.html"
   status = 301
+  force = true
 
 # HTML: siempre revalidar (los datos van incrustados en la página)
 [[headers]]
