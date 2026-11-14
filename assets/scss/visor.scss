@@ -3,3 +3,8 @@ $primary: #0d4a70;
 $body-color: #12263a;
 $body-bg: #f3f6f7;
 $font-family-sans-serif: "Ubuntu", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+/*-- scss:rules --*/
+// Neutraliza estilos globales de Quarto/Bootstrap sobre los encabezados de los módulos
+#ene h2, #cv h2 { border-bottom: 0; padding-bottom: 0; }
+#ene h3, #ene h4, #cv h3, #cv h4 { opacity: 1; }
