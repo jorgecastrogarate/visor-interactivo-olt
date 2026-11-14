@@ -1,0 +1,17 @@
+/* Base y componentes comunes. Todo cuelga de .visor (contenedor raíz de cada módulo),
+   con especificidad menor que los selectores por id de cada página, que pueden sobrescribirlos. */
+
+.visor { font: 16px/1.5 var(--font-base); color: var(--tinta); }
+.visor *, .visor *::before, .visor *::after { box-sizing: border-box; }
+.visor button, .visor select { font: inherit; color: inherit; }
+.visor .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Cabecera de módulo */
+.visor .cab h1 { font-size: 1.75rem; line-height: 1.2; font-weight: 700; margin: 0 0 .35rem; }
+.visor .cab p { margin: 0; color: var(--suave); max-width: 62ch; }
+
+/* Aviso (el margen lo define cada página) */
+.visor .aviso { border-left: 3px solid var(--rojo); background: var(--rojo-claro); padding: .7rem .9rem; font-size: .92rem; max-width: 70ch; }
+
+/* Pie de módulo (cada página puede ajustar el margen superior) */
+.visor footer { margin-top: 1.75rem; font-size: .8rem; color: var(--suave); max-width: 80ch; }

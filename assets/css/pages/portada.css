@@ -1,26 +1,13 @@
-body { background: #f3f6f7; margin: 0; }
-
 #pt {
-  --tinta: #12263a;
-  --suave: #51636f;
-  --papel: #ffffff;
-  --linea: #d3dce0;
-  --marino: #0d4a70;
-  --marino-oscuro: #0a3a58;
-  --lito: #1b7a70;
-  --lito-oscuro: #14615a;
-  font: 16px/1.5 "Ubuntu", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  color: var(--tinta);
   max-width: 920px;
   margin: 0 auto;
   padding: 3rem 1.25rem 4rem;
 }
-#pt *, #pt *::before, #pt *::after { box-sizing: border-box; }
 
 #pt .etiqueta {
   display: inline-block; margin: 0 0 .9rem; padding: .15rem .6rem;
   font-size: .8rem; font-weight: 600; letter-spacing: .02em;
-  color: var(--marino); background: #e4eff6; border-radius: 999px;
+  color: var(--marino); background: var(--marino-claro); border-radius: 999px;
 }
 #pt h1 { margin: 0 0 1rem; font-size: 2.2rem; line-height: 1.15; font-weight: 700; }
 #pt .intro { margin: 0 0 2.5rem; max-width: 66ch; font-size: 1.1rem; line-height: 1.65; color: var(--suave); }
@@ -31,7 +18,6 @@ body { background: #f3f6f7; margin: 0; }
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
-#pt footer { margin-top: 1.75rem; font-size: .8rem; color: var(--suave); max-width: 80ch; }
 #pt .opcion { position: relative; }
 
 #pt a.boton {

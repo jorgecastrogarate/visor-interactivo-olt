@@ -18,7 +18,7 @@ format:
 
 ```{=html}
 
-<main id="pt">
+<main id="pt" class="visor">
   <span class="etiqueta">Versión piloto</span>
   <h1>Visor Interactivo</h1>
   <p class="intro">

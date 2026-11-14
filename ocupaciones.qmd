@@ -19,8 +19,8 @@ format:
 
 ```{=html}
 
-<div id="cv" lang="es">
-  <header class="cv-cab">
+<div id="cv" class="visor" lang="es">
+  <header class="cv-cab cab">
     <h1>Catálogo de ocupaciones CIUO08</h1>
     <p>Busca una ocupación, revisa qué puestos incluye y cuáles excluye, y consulta  los perfiles ocupacionales, requisitos, certificaciones y competencias laborales asociados, utilizando información de distintas fuentes.</p>
   </header>

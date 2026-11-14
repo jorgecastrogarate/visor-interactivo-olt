@@ -24,8 +24,8 @@ format:
 
 ```{=html}
 
-<div id="ene" lang="es">
-  <header class="ene-cab">
+<div id="ene" class="visor" lang="es">
+  <header class="ene-cab cab">
     <h1>Indicadores del mercado laboral</h1>
     <p>Elige un indicador para explorar los datos por trimestre móvil.Personaliza el gráfico, elige el periodo, título y etiquetas, y descárgalo en formato PNG.<br>Selecciona ver datos en tabla para descargar los datos en formato Excel y generar tus propias visualizaciones</p>
   </header>

@@ -1,0 +1,31 @@
+/* Tokens de diseño del visor. Única fuente de verdad de colores y tipografía.
+   Los valores eran idénticos en los tres módulos; solo variaba qué subconjunto declaraba cada uno. */
+:root {
+  /* Texto y superficies */
+  --tinta: #12263a;
+  --suave: #51636f;
+  --fondo: #f3f6f7;
+  --papel: #ffffff;
+  --linea: #d3dce0;
+  --linea-suave: #edf1f3;
+
+  /* Marca */
+  --marino: #0d4a70;
+  --marino-oscuro: #0a3a58;
+  --marino-claro: #e4eff6;
+  --lito: #1b7a70;
+  --lito-oscuro: #14615a;
+  --lito-claro: #e3f2ef;
+
+  /* Estados */
+  --rojo: #a8281f;
+  --rojo-claro: #fbefee;
+  --ambar: #8a5200;
+
+  /* Controles */
+  --borde-control: #9fb0b9;
+  --texto-deshabilitado: #8b9aa3;
+
+  /* Tipografía */
+  --font-base: "Ubuntu", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}

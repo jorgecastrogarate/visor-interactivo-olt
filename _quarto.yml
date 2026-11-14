@@ -31,4 +31,7 @@ format:
     toc: false
     page-layout: custom
     embed-resources: false
+    css:
+      - assets/css/tokens.css
+      - assets/css/components.css
     include-in-header: _includes/head.html
