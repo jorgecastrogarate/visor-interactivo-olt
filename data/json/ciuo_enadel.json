@@ -1,0 +1,147 @@
+[
+  {
+    "CIUO_4D": "4211",
+    "Puestos_Unicos": "Cajero",
+    "Tareas": "Atender a clientes en caja o casa de cambio; Recibir dinero, especies valoradas y pagos (estacionamiento, arriendo de locales); Realizar transacciones y manejar dinero; Efectuar balance y cuadratura de caja diaria; Registrar ingresos de facturas; Mantener la caja limpia y organizada"
+  },
+  {
+    "CIUO_4D": "4222",
+    "Puestos_Unicos": "Ejecutivo de Call Center / Teleoperador; Ejecutivo de Soporte / Postventa; Operador de Central de Emergencias / Radio; Supervisor de Call Center; Telefonista",
+    "Tareas": "Atender consultas, requerimientos, reclamos y problemas de clientes por vía telefónica, presencial o digital; Informar sobre servicios y productos, y derivar al área técnica cuando corresponde; Verificar pagos y servicios, revisar y validar pedidos en plataforma o WhatsApp, gestionando descuentos; Coordinar solicitudes de servicio, dar seguimiento y recibir denuncias de siniestros; Atender facturación y dificultades de navegación o plataforma de clientes; Recepcionar llamadas de emergencia y despachar/movilizar recursos (bomberos, cuartel) mediante sistema computacional; Operar radio como radio operador; Supervisar grupos de ejecutivos de call center; Orientar a pacientes y manejar códigos o indicaciones propias del servicio (p. ej. imagenología)"
+  },
+  {
+    "CIUO_4D": "4224",
+    "Puestos_Unicos": "Botones / Conserje; Recepcionista de Hotel",
+    "Tareas": "Recibir, dar la bienvenida y registrar a huéspedes y pasajeros; Gestionar reservas y cancelaciones; Realizar check-in y check-out; Entregar información sobre el hotel, cabañas, servicios y entorno; Asignar y entregar habitaciones, solicitar documentación y registrar clientes; Cobrar, recibir pagos y facturar; Atender personalizadamente a clientes de hotel y restaurante durante su estadía; Resolver requerimientos de huéspedes y pasajeros; Verificar orden y limpieza de habitaciones y coordinar tareas dentro de las instalaciones; Atender llamadas telefónicas, recibir y guiar visitantes, gestionar citas y correspondencia; Operar computador y sistemas de reservas"
+  },
+  {
+    "CIUO_4D": "4225",
+    "Puestos_Unicos": "Administrativo de Atención de Público; Ejecutivo de Atención al Cliente / Público; Encargado de Información; Recepcionista; Secretario/Administrativo",
+    "Tareas": "Atención presencial, telefónica y de público a clientes, usuarios y pasajeros; Resolver dudas, consultas, reclamos, sugerencias y solicitudes; Mantener informados a clientes sobre embarques, importaciones y estado de reparaciones; Entregar información solicitada, registrar reservas y coordinar entrega de equipos; Ingresar reclamos y negociar deudas; Recibir clientes y orientarlos"
+  },
+  {
+    "CIUO_4D": "4226",
+    "Puestos_Unicos": "Recepcionista; Recepcionista Telefónico; Recepcionista de Hotel; Recepcionista de Salud / Clínica; Secretario/a Recepcionista",
+    "Tareas": "Atender y recibir público, clientes, proveedores y visitantes (presencial y telefónico); Recepcionar e ingresar pacientes al sistema, orientar y derivar; Agendar, confirmar y cambiar citas y horas médicas; Vender bonos, cobrar y realizar cobranzas, cajero; Gestionar matrícula, reservas, pedidos y atención a socios; Responder consultas, dar información y orientación general; Coordinar con secretarias y atender correspondencia; Entregar programas médicos y ordenar documentación de ingreso"
+  },
+  {
+    "CIUO_4D": "4311",
+    "Puestos_Unicos": "Administrativo / Asistente Administrativo; Administrativo de Cobranzas; Administrativo de Logística; Analista Administrativo-Contable; Asistente Contable; Asistente de Finanzas; Tesorero",
+    "Tareas": "Registrar y clasificar transacciones contables y financieras (ingresos, egresos, pagos); Emitir, revisar y controlar facturas, guías de despacho y documentación tributaria; Gestionar facturación y cobranza a clientes y pago a proveedores; Cuadrar caja, controlar flujo de caja y realizar conciliaciones bancarias; Registrar, analizar y controlar costos, gastos y presupuestos; Elaborar liquidaciones de sueldo, remuneraciones, imposiciones y declaraciones tributarias (IVA, F29); Gestionar órdenes de compra, estados de pago y contratos; Apoyar en recursos humanos, administración y licitaciones (Mercado Público); Controlar costos de ingreso de mercadería y de obras; Usar Excel y herramientas tecnológicas de apoyo"
+  },
+  {
+    "CIUO_4D": "4321",
+    "Puestos_Unicos": "Asistente de Abastecimiento; Auxiliar de Bodega; Bodeguero / Encargado de Bodega; Encargado de Despacho; Encargado de Inventario; Jefe / Supervisor de Bodega; Operador Logístico; Pañolero",
+    "Tareas": "Recepcionar, verificar y registrar mercaderías, insumos y productos; Almacenar y mantener el orden de la bodega según criterios logísticos; Controlar inventario y stock, llevar registros; Controlar entrada y salida de productos, materiales, herramientas y activos (incl. químicos); Preparar pedidos (picking), despachar y distribuir productos e insumos; Cargar y descargar mercaderías; Entregar herramientas y materiales a usuarios; Planificar rutas y administrar inventario de productos terminados; Apoyar la carga y custodiar la mercadería"
+  },
+  {
+    "CIUO_4D": "4323",
+    "Puestos_Unicos": "Controlador de Carga y Andén; Controlador de Transporte / Rutas; Coordinador de Transporte / Logística; Despachador de Transporte; Jefe / Supervisor de Operaciones y Transporte; Operador / Asistente Logístico; Operador Portuario",
+    "Tareas": "Controlar entrada, salida y asistencia de vehículos, buses y choferes; Coordinar, asignar y supervisar rutas, horarios, andenes y conductores; Monitorear flotas en ruta (GPS) y cumplimiento de rutas; Coordinar logística de distribución y servicios con clientes; Generar guías de despacho, controlar peso y documentación de carga; Supervisar carga, descarga y entrega de camiones, mercadería y buques; Revisar y validar pedidos en plataformas y canales de comunicación; Planificar y gestionar operaciones logísticas de planta, dotación de insumos (agua, alimentos) a aeronaves; Atender clientes y público, e informar a usuarios de transporte"
+  },
+  {
+    "CIUO_4D": "5120",
+    "Puestos_Unicos": "Cocinero; Cocinero Jefe / Maestro de Cocina; Manipulador de Alimentos",
+    "Tareas": "Preparar y elaborar platos, alimentos, menús y comidas (fría, caliente, hornear, saltear, parrilla, comidas tradicionales chilenas); Supervisar y coordinar la cocina, la calidad y el sabor de las preparaciones; Planificar menús y carta, elaborar postres, desayunos y comida rápida; Preparar y servir alimentación a personal, trabajadores y huéspedes; Manipular alimentos de forma segura y mantener limpieza y orden de la cocina; Gestionar inventario e ingredientes; Lavar, cortar y preparar insumos"
+  },
+  {
+    "CIUO_4D": "5312",
+    "Puestos_Unicos": "Asistente de Aula / Asistente de la Educación; Asistente de Educación Parvularia / Educador; Inspector de Patio / Inspector General",
+    "Tareas": "Apoyar al docente en aula y en materiales y actividades de enseñanza-aprendizaje; Cuidar y acompañar a niños y estudiantes (bienestar, higiene, juego, aprendizaje); Velar por orden, disciplina, convivencia escolar y cumplimiento de reglamento; Atender apoderados y apoyar tareas administrativas del establecimiento; Controlar acceso y resguardar a estudiantes; Atención individual y grupal a estudiantes y apoyo a profesores en actividades; Tomar muestras dentales (apoyo en salud escolar); Apoyo como chofer y secretaría en el establecimiento"
+  },
+  {
+    "CIUO_4D": "5414",
+    "Puestos_Unicos": "Guardia de Seguridad; Guardia de Valores; Operador de Cámaras / Monitoreo; Portero; Supervisor / Jefe de Seguridad",
+    "Tareas": "Vigilar y controlar el acceso de personas y vehículos; Realizar rondas y vigilancia perimetral de recintos asignados; Resguardar personas, bienes e instalaciones; Monitorear cámaras de seguridad y verificar alarmas; Supervisar guardias y velar por el cumplimiento de tareas; Mantener orden y prevenir incidentes con clientes y personal; Gestionar seguridad, estrategias y logística del recinto; Reclutar y administrar personal de seguridad; Realizar tareas de cobranza (secundarias)"
+  },
+  {
+    "CIUO_4D": "7115",
+    "Puestos_Unicos": "Ayudante de Carpintero / Maestro; Carpintero de Obra; Instalador de Puertas y Ventanas; Maestro de Construcción",
+    "Tareas": "Cortar, armar, ensamblar e instalar estructuras de madera (marcos, puertas, ventanas, techumbres, tabiques); Construir obra gruesa, moldajes, cerchas (madera o metalcon) y viviendas/mediaguas; Efectuar terminaciones y labores menores de construcción, albañilería y pintura; Fabricar e instalar muebles y planchas; Tomar medidas y usar herramientas manuales y maquinaria eléctrica; Ejecutar y mantener partidas de obras civiles; Trasladar materiales e instalar vidrios"
+  },
+  {
+    "CIUO_4D": "7126",
+    "Puestos_Unicos": "Ayudante de Gasfiter; Cañonero; Gasfiter; Instalador Sanitario / de Tuberías; Operador de Redes de Agua; Técnico Instalador",
+    "Tareas": "Instalar, mantener y reparar sistemas de agua potable, alcantarillado y gas; Montar y reparar tuberías, cañerías y desagües; Instalar redes de gas y calefacción central, y artefactos (calefón, agua caliente); Realizar instalaciones sanitarias en casas, edificios y comercios; Efectuar mantenciones preventivas de redes; Soldar y fabricar uniones de cañería; Aplicar primeros auxilios y manejar sustancias peligrosas"
+  },
+  {
+    "CIUO_4D": "7127",
+    "Puestos_Unicos": "Ayudante de Técnico en Climatización; Supervisor de Instalaciones; Técnico en Climatización y Aire Acondicionado; Técnico en Instalación y Mantención; Técnico en Refrigeración",
+    "Tareas": "Instalar, mantener y reparar equipos de refrigeración, climatización y aire acondicionado; Montar ductos de aire acondicionado; Instalar, mantener y reparar contenedores refrigerados y cámaras frigoríficas portuarias, incl. reparaciones eléctricas y mecánicas; Realizar mantenimiento preventivo y revisión técnica de equipos de frío para abastecimiento de mercadería; Cumplir procedimientos y normativas de seguridad; Dominar el funcionamiento de equipos de climatización"
+  },
+  {
+    "CIUO_4D": "7131",
+    "Puestos_Unicos": "Empapelador; Maestro de Terminaciones; Pintor de Obra / Maestro Pintor",
+    "Tareas": "Preparar superficies (lijar, masillar) y aplicar pinturas y revestimientos protectores; Pintar interiores y exteriores de viviendas y construcciones, incluso en altura; Pintar estructuras y cañerías; Armar e instalar letreros, gráficos y adhesivos corporativos; Apoyar en obra con labores complementarias (soldadura, estuco)"
+  },
+  {
+    "CIUO_4D": "7212",
+    "Puestos_Unicos": "Ayudante de Soldador; Jefe de Taller de Soldadura; Oxicortador; Soldador / Maestro Soldador; Soldador Buzo",
+    "Tareas": "Soldar y unir piezas y estructuras metálicas con técnicas MIG, TIG, arco eléctrico y otras; Interpretar planos y especificaciones técnicas; Fabricar y armar estructuras metálicas; Soldar y reparar maquinaria, componentes, barcos, muelles y puentes; Medir, cortar y preparar materiales, usar galleteras y máquinas; Supervisar la ejecución de trabajos de soldadura y controlar calidad; Asistir al maestro soldador y aprender el oficio (ayudante/aprendiz); Apoyar en mantenimiento y reparaciones"
+  },
+  {
+    "CIUO_4D": "7213",
+    "Puestos_Unicos": "Calderero / Chapista; Desabollador y Pintor Automotriz; Hojalatero; Operador de Caldera / Planta; Operario Metalmecánico",
+    "Tareas": "Construir, armar, mantener y reparar estructuras metálicas, recipientes y tuberías con chapas; Armar cascos de embarcaciones menores y desabollar; Fabricar y reparar productos de hojalatería y menaje; Operar guillotina y sierra circular; Coordinar operaciones del taller de hojalatería y mantener el aseo del lugar de trabajo"
+  },
+  {
+    "CIUO_4D": "7223",
+    "Puestos_Unicos": "Fresador; Operador de Máquinas Herramientas / Mecánico de Taller; Tornero",
+    "Tareas": "Operar tornos, fresadoras, trozadoras y punzonadoras; Fabricar y reparar piezas metálicas, engranajes, pernos, bujes y carcasas; Interpretar planos, croquis y tolerancias para asegurar precisión dimensional; Seleccionar herramientas, medir y controlar calidad de piezas; Mantener y reparar maquinaria, realizar inspecciones, mantenciones preventivas y revisar equipos eléctricos, mecánicos e hidráulicos; Organizar herramientas y repuestos y actualizar inventarios"
+  },
+  {
+    "CIUO_4D": "7231",
+    "Puestos_Unicos": "Ayudante de Mecánico; Jefe de Taller / Supervisor Mecánico; Mecánico / Técnico Mecánico; Mecánico Automotriz; Mecánico de Camiones y Maquinaria Pesada",
+    "Tareas": "Diagnosticar fallas y realizar mantenimiento preventivo y correctivo de vehículos livianos, pesados, camiones y maquinaria agrícola; Reparar y reemplazar componentes mecánicos y eléctricos, motores y sistemas; Cambiar aceite y neumáticos, realizar alineación, balanceo y montaje; Efectuar revisión automotriz y chequeo general; Realizar mantenciones periódicas por kilometraje a flotas corporativas; Mantener el orden del taller y apoyar a soldadores"
+  },
+  {
+    "CIUO_4D": "7233",
+    "Puestos_Unicos": "Ayudante de Mecánico; Encargado / Jefe de Mantención; Mecánico Industrial / de Maquinaria; Reparador de Maquinaria; Técnico en Mantenimiento Mecánico",
+    "Tareas": "Realizar mantenimiento preventivo y correctivo de maquinaria, equipos industriales y mineros; Inspeccionar, diagnosticar y reparar equipos y componentes (reductores, rodamientos, ejes, polines, correas transportadoras, molinos); Instalar maquinaria y equipos; Mecanizar piezas y desarrollar mejoras mecánicas y de soldadura; Reparar maquinaria agroforestal y de planta (p. ej. lavadoras y secadoras de algas) pre y post venta; Asesorar técnicamente"
+  },
+  {
+    "CIUO_4D": "7411",
+    "Puestos_Unicos": "Ayudante de Electricista; Electricista / Maestro Electricista; Instalador Eléctrico; Técnico Electricista",
+    "Tareas": "Instalar, mantener y reparar sistemas eléctricos en viviendas, edificaciones, obras e industrias (cableado, tableros, interruptores, luminarias); Planificar y ejecutar instalaciones eléctricas, proyectos y empalmes, interpretar planos; Trabajar en baja y media tensión; Realizar diagnósticos, certificaciones y mantenimiento de generadores; Configurar y supervisar redes eléctricas; Asistir al electricista: preparar herramientas, materiales y cargar cables; Mantener instalaciones sanitarias y revestimientos (labores complementarias)"
+  },
+  {
+    "CIUO_4D": "7412",
+    "Puestos_Unicos": "Ayudante de Electricista / Electromecánico; Electricista Automotriz; Electromecánico; Jefe Técnico Electromecánico; Mantenedor Eléctrico / Electromecánico; Técnico Electricista / Eléctrico; Técnico en Ascensores; Técnico en Equipos Electrónicos",
+    "Tareas": "Instalar, mantener y reparar sistemas eléctricos y electromecánicos de maquinaria, equipos industriales, calderas y centrales; Realizar mantenimiento preventivo y correctivo de equipos, tableros eléctricos y generadores; Mantener motores monofásicos y trifásicos (bobinado, rodamientos, estator); Instalar equipos de seguridad en terreno (cámaras, control de acceso, enlaces); Mantener y reparar ascensores; Operar y monitorear turbinas generadoras de electricidad; Mantener plantas de tratamiento de aguas servidas y equipos de control de gases; Asegurar la operatividad del sistema eléctrico de equipos de frío y apoyar a electricistas; Jefatura de servicio técnico"
+  },
+  {
+    "CIUO_4D": "7422",
+    "Puestos_Unicos": "Ayudante de Técnico en Telecomunicaciones; Liniero; Técnico Instalador; Técnico en Computadores y Celulares; Técnico en Cámaras y Seguridad Electrónica; Técnico en Fibra Óptica; Técnico en Telecomunicaciones / Redes",
+    "Tareas": "Instalar, configurar, mantener y reparar redes y equipos de telecomunicaciones (fibra óptica, cable, antenas); Empalmar fibra óptica con fusionadora y medir con OTDR; Instalar servicios de internet, telefonía y TV en domicilios y empresas; Brindar soporte técnico en terreno a clientes y atender equipos domiciliarios; Instalar y mantener cámaras de seguridad; Diagnosticar y reparar fallas de sistemas de comunicación; Conducir y transportar herramientas para la atención en terreno"
+  },
+  {
+    "CIUO_4D": "8111",
+    "Puestos_Unicos": "Fortificador; Operador de Maquinaria Minera; Operador de Planta Minera; Trabajador / Operador Minero",
+    "Tareas": "Extraer minerales, excavar pozos y túneles y ejecutar obras mineras; Operar equipos y maquinaria de perforación (exploración y voladuras) y controlar parámetros; Transportar mineral o estéril dentro de la mina; Operar y supervisar procesos de planta y áridos; Cumplir protocolos de seguridad y mantener equipos"
+  },
+  {
+    "CIUO_4D": "8322",
+    "Puestos_Unicos": "Conductor Repartidor; Conductor de Ambulancia; Conductor de Furgón / Vehículo Liviano; Conductor de Taxi / Colectivo / Transfer",
+    "Tareas": "Conducir camiones, furgones y vehículos de reparto para transportar y entregar mercaderías y productos a clientes, bodegas y locales; Cargar, descargar y entregar encomiendas y despachar facturas; Transportar pasajeros, personal (interno o externo) y equipaje; Conducir ambulancia, trasladar y apoyar a pacientes; Transportar muebles, pan, harina, confitería y maquinaria; Coordinar rutas, mantener y limpiar el vehículo"
+  },
+  {
+    "CIUO_4D": "8331",
+    "Puestos_Unicos": "Conductor de Bus (transporte general de pasajeros); Conductor de Bus Interurbano / Interprovincial (Licencia A3); Conductor de Bus Urbano / Transporte Público; Conductor de Bus de Transporte de Personal",
+    "Tareas": "Conducir buses y micros de transporte de pasajeros (urbano, interurbano, regional, privado y público) de forma segura y eficiente; Transportar personal desde y hacia faenas mineras y empresas; Respetar rutas, horarios y normas de tránsito; Mantener el orden, aseo y buen estado del bus, mantener la revisión técnica al día y gestionar carga de combustible; Realizar viajes privados y públicos"
+  },
+  {
+    "CIUO_4D": "8332",
+    "Puestos_Unicos": "Conductor Repartidor de Carga; Conductor de Camión de Carga",
+    "Tareas": "Conducir camiones de carga por carretera (cisterna, tolva, pluma, carga general) transportando mercancías, materiales, ácido sulfúrico, áridos, fruta, salmón, grano y alimento animal; Cargar, descargar y controlar la carga, recepcionar y entregar a clientes; Cumplir rutas diarias y plazos hacia centros de distribución y puntos acordados; Evaluar el estado del camión y mantenerlo; Cumplir normas de tránsito y seguridad; Ayudar en carga y descarga manual"
+  },
+  {
+    "CIUO_4D": "8343",
+    "Puestos_Unicos": "Conductor de Camión Grúa / Pluma; Operador de Grúa / Maquinaria de Izaje; Rigger / Operador de Grúa",
+    "Tareas": "Operar grúas (horquilla, telescópica, articulada), camión pluma y camión grúa para izaje, carga y descarga; Levantar y mover cargas pesadas, apilar pallets, madera y mercadería; Operar sistemas hidráulicos y plumas montadas en torretas, instalar y dar servicio a plumas hidráulicas; Transportar carga dentro de la empresa hacia cámaras de frío y bodegas; Despachar insumos, descargar pescado, mariscos y productos; Mantener el equipo y seguir protocolos de seguridad"
+  },
+  {
+    "CIUO_4D": "8344",
+    "Puestos_Unicos": "Operador de Bodega; Operador de Grúa; Operador de Grúa Horquilla / Montacargas; Operador de Maquinaria de Carga y Producción",
+    "Tareas": "Operar grúas horquilla, grúas articuladas y maquinaria pesada; Cargar, descargar y estibar pallets, bins, sacos y materiales; Transportar y apilar carga dentro de planta, de la línea de proceso a cámaras de frío y bodegas; Recepcionar y acopiar material de reciclaje y cargar camiones; Mover residuos orgánicos y voltear pilas de compost; Trasladar madera entre máquinas y alimento hacia buques; Cumplir normas de seguridad"
+  }
+]

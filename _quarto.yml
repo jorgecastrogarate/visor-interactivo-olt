@@ -1,0 +1,31 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - indicadores.qmd
+    - ocupaciones.qmd
+
+website:
+  title: "Visor Interactivo"
+  search: false
+  bread-crumbs: false
+  navbar:
+    background: primary
+    collapse-below: md
+    left:
+      - text: "Inicio"
+        href: index.qmd
+      - text: "Indicadores ENE"
+        href: indicadores.qmd
+      - text: "Ocupaciones CIUO-08"
+        href: ocupaciones.qmd
+  page-footer:
+    center: "Página realizada por el Observatorio Laboral de Tarapacá, ejecutado por el Centro de Formación Técnica Estatal de Tarapacá."
+
+format:
+  html:
+    theme: [cosmo, assets/scss/visor.scss]
+    toc: false
+    page-layout: custom
+    embed-resources: false
